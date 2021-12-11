@@ -12,6 +12,7 @@ Who makes the first move in battle is decided by the dice. The monster's movemen
 Once the hero has been defeated or the hero has defeated the final boss, this game is over.
 
 ### Flow chart to get the permission
-![](/ppt/img/char_flow.jpeg)
+![](/docs/char_flow.jpeg)
 
-### Try to set the p
+### Try to set the Trello
+Trello : https://trello.com/b/8HdBAS8b/terminalapplication
