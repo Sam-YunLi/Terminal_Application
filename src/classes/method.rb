@@ -3,44 +3,9 @@ def roll_dice(min, max)
   rand(min.to_i..max.to_i)
 end
 
-# main menu
-def main_menu
-  question = TTY::Prompt.new
-  choises = { 
-    "New Game" => "new_game", 
-    "Load Game" => "load_game", 
-    "Hall of fame" => "hof", 
-    "Exit" => "exit"
-  }
-
-  case question.select("MENU", choises)
-    when "new_game"
-      pp "new_game"
-
-      # build new char
-      char = new_character
-      # put char to daily menu
-      daily_menu(char)
-      
-      # test
-      pp char.name
-
-    when "load_game"
-      pp "load_game"
-
-    when "hof"
-      pp "hof"
-
-    when "exit"
-      pp "exit"
-  end
-
-end
-
 # new character method use to build new character class
 def new_character
   question = TTY::Prompt.new
-
   # ask the name 
   name = question.ask("Hero, What is your name?") do |q|
     q.required true
@@ -51,7 +16,6 @@ def new_character
   while 
     hp = roll_dice(65,100)
     att = roll_dice(15,20)
-  
 
     reroll = question.select("Your HP: #{hp}, Attact power: #{att}".colorize(:light_red)) do |menu|
       menu.choice "Reroll Attibutes.".colorize(:light_blue), false
@@ -61,9 +25,54 @@ def new_character
     if reroll
       break
     end
-
   end
 
   # return a character class
-  return Character.new(name, hp, att)
+  return Character.new(name, hp, hp, att, 100, true)
+end
+
+# return [dice, damage, message]
+def count_damge(damage)
+  damage = damage
+  message = ""
+  dice = roll_dice(1,6)
+  case dice
+  when 1
+    damage = 0
+    message = "Miss!"
+  when 2
+    damage = roll_dice((damage * 0.5).to_i ,(damage * 0.8).to_i)
+    message = "Almost miss!"
+  when 3..5
+    damage = roll_dice((damage * 0.9).to_i ,(damage * 1.2).to_i)
+    message = "Hit!"
+  when 6
+    damage = roll_dice((damage * 1.5).to_i ,(damage * 2).to_i)
+    message = "Crit!"
+  end
+  return [dice, damage, message]
+end
+
+# Save game method
+def save_game
+  puts "Save game!"
+end
+
+
+# Load game method
+def load_game
+  puts "Load game!"
+end
+
+
+# Show Hall of fame method
+def hall_of_fame
+  puts "Hall of fame!"
+end
+
+
+# Exit game method
+def exit_game
+  puts "GOODBYE HERO!"
+
 end
