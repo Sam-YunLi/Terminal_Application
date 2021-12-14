@@ -7,13 +7,27 @@ end
 def new_character
   question = TTY::Prompt.new
   # ask the name 
-  name = question.ask("Hero, What is your name?") do |q|
-    q.required true
-    q.modify   :capitalize
+  while true
+    name = question.ask("Hero, What is your name?") do |q|
+      q.required true
+      q.modify   :capitalize
+    end
+    if File::exists?('./save/save.json')
+      read_file = JSON.parse(IO.read("./save/save.json"))
+      if read_file.keys.include? name
+        puts "#{name} already exist, please use another one."
+      else
+        break
+      end
+    else
+      break
+    end
   end
 
+
+
   # random hp and att, player reroll until they happy with it
-  while 
+  while true
     hp = roll_dice(80,100)
     att = roll_dice(35,40)
 
@@ -150,15 +164,87 @@ end
 
 # Load game method
 def load_game
-  puts "Load game!"
-
+  question = TTY::Prompt.new
+  # check the save file is exit or not
+  if File::exists?('./save/save.json')
+    list = []
+    # Read file as hash
+    read_file = JSON.parse(IO.read("./save/save.json"))
+    # check each element find the value for the list
+    read_file.each do |key, value|
+      list = list.push({name: "#{key}    Day #{value[5]}.", value: key})
+    end
+    # show the selection
+    lock_char = question.select("Please choise which one you want play.", list)
+    puts "Loading. #{lock_char}"
+    sleep 1
+    question.select("Complete loading.", "Start.")
+    char = Character.new(lock_char,read_file[lock_char][0],read_file[lock_char][1],read_file[lock_char][2],read_file[lock_char][3],read_file[lock_char][4])
+    day = read_file[lock_char][5]
+    daily_menu(char,day)
+  # if the file is not exit
+  else
+    question.select("Sorry, no saving.", "back to main menu")
+    return main_menu
+  end
 end
 
 
+# delet from save file, put in hof file
+def hero_dead(char, day)
+  char = char
+  day = day
+  save_file = {char.name => [char.hp, char.max_hp, char.att, char.gold, char.alive, day]}
+  read_save_file = {}
+  # check if the save file exist.
+  if File::exists?('./save/save.json') and File.read("./save/save.json") != ""
+    # delet from save file
+    read_save_file = JSON.parse(IO.read("./save/save.json"))
+    read_save_file.delete(char.name)
+    # rewrite save file
+    File.open("./save/save.json","w") do |f|
+      f.write(read_save_file.to_json)
+    end
+  end
+  # check the hof file exist and not empty
+  if File::exists?("./save/hof.json") and File.read("./save/hof.json") != ""
+    read_file= JSON.parse(IO.read("./save/hof.json"))
+    # use merge cover the old data
+    save_file = save_file.merge(read_file){|key, old_v, new_v| new_v}
+  end
+  # rewrite hof file
+  File.open("./save/hof.json","w") do |f|
+    f.write(save_file.to_json)
+  end
+end
+
 # Show Hall of fame method
 def hall_of_fame
-  puts "Hall of fame!"
-
+  question = TTY::Prompt.new
+  # check hof file is exit or not
+  if File::exists?('./save/hof.json')
+    list = []
+    # Read file as hash
+    read_file = JSON.parse(IO.read("./save/hof.json"))
+    # check each element find the value for the list
+    read_file.each do |key, value|
+      list = list.push([key, value[5]])
+    end
+    # sort list
+    list.sort!{|a,b| b[1] <=> a[1]}
+    index = 0
+    # display list
+    list.each do |list|
+      if index < 3
+        puts "No. #{index+1}:  #{list[0]}   -- #{list[1]} days."
+      end
+      index += 1
+    end
+    question.select("-------------------.", "Back to main menu.")
+  else
+    question.select("Sorry, Nothing here.", "Back to main menu.")
+  end
+  return main_menu
 end
 
 

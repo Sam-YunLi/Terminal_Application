@@ -83,19 +83,19 @@ class Monster
       @att = roll_dice(25, 30) + @day
       @max_hp = roll_dice(70,100) + @day * 10
       @hp = @max_hp
-      @gold = roll_dice(10,20)
+      @gold = roll_dice(20,50)
     when 6..10
       @name = ["Goblin", "Spirit", "Skeletor", "Troll", "Vampire", "Zombie", "Ghoul"].sample
       @att = roll_dice(30,35) + (@day - 5) * 2
       @max_hp = roll_dice(130,150) + (@day - 5) * 15
       @hp = @max_hp
-      @gold = roll_dice(15,25)
+      @gold = roll_dice(30,60)
     else
       @name =["Werewolf", "Yeti", "Godzilla", "Troll", "Vampire", "Zombie", "Ghoul"].sample
       @att = roll_dice(40,45) + (@day - 10) * 3
       @max_hp = roll_dice(205,225) + (@day - 10) * 20
       @hp = @max_hp
-      @gold = roll_dice(20,30)
+      @gold = roll_dice(40,70)
     end
   end
 

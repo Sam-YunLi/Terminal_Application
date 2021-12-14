@@ -136,7 +136,8 @@ def battle(char, day)
       # Can't attack but heal yourself
       char.heal(50)
       # show the box
-      question.select("Healing yourself.", "Healing.")
+      sleep 1
+      question.select("Using bandage.", "Healing yourself")
       system('clear')
       show_box(char, day, "Heal yourlesf.", monster)
       puts "Healing yourself."
@@ -192,16 +193,8 @@ def battle(char, day)
     char.get_hurt(mon_damge[1])
 
     # Check char hp 
-    if char.hp < 1
-      # when hp < 1 lose game
-      sleep 1
-      system('clear')
-      show_box(char, day, "YOU LOSE", monster)
-      question.select("You lose.", "Main menu")
-      # break loot go to main_menu
-      return main_menu
-    else
-      # char alive, refresh HP to box 
+    if char.alive
+      # char alive
       sleep 1
       system('clear')
       show_box(char, day, mon_damge[2], monster)
@@ -215,6 +208,17 @@ def battle(char, day)
       system('clear')
       show_box(char, day, "HERO TURN", monster)
       puts "Hero Turn."
+
+    else
+      # when hp < 1 lose game
+      sleep 1
+      system('clear')
+      show_box(char, day, "YOU LOSE", monster)
+      # use this method to delet from save file, put in hof file
+      hero_dead(char,day)
+      question.select("You lose.", "Main menu")
+      # break loot go to main_menu
+      return main_menu
     end
   end
   # Error if you see this

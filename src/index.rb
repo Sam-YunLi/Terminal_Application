@@ -9,30 +9,20 @@ require_relative './classes/method'
 require_relative './classes/menu_method'
 
 
-# def load_game
-#   puts "Load game!"
 
-#   # check the save file is exit or not
-#   if File::exists?('./save/save.json')
-#     # Read save file
-#     file = File.new('./save/save.txt','r')
-    
+# char = Character.new("ABC", 100, 100, 20, 100, false)
+# day = 4
+# hero_dead(char, day)
 
-
-
-#   # if the file is not exit
-#   else
-#     question.select("Sorry, no saving.", "back to main menu")
-#     main_menu
-#   end
-
-# end
-
-char = Character.new("Leo", 90, 100, 40, 100, true)
-day = 6
+# h = { "a" => 100, "b" => 200 }
+# h.delete("z") 
+# pp h.delete("z") 
 
 
-
+# list = [{name: "a", value: 1},{name: "b", value: 2}]
+# question = TTY::Prompt.new
+# a = question.select("Sorry, no saving.", list)
+# pp a.class
 
 
 
