@@ -3,6 +3,7 @@ GEM
   specs:
     artii (2.1.2)
     colorize (0.8.1)
+    json (2.6.1)
     pastel (0.8.0)
       tty-color (~> 0.5)
     strings (0.2.1)
@@ -34,6 +35,7 @@ PLATFORMS
 DEPENDENCIES
   artii
   colorize
+  json
   tty-box
   tty-prompt
 
