@@ -11,11 +11,21 @@ require_relative './classes/menu_method'
 
 
 
-
-
-
 char = Character.new("Kha", 100, 100, 20, 100, true)
-battle(char, 1)
+show_box(char, 1, "SHOP")
+buy(char,60,"max_hp",50)
+show_box(char, 1, "SHOP")
+
+
+
+
+# char = Character.new("Kha", 100, 100, 20, 100, true)
+# monster = Monster.new(1)
+# show_box(char,"crit damge", monster)
+# show_box(char, "SHOP")
+
+# battle(char,1)
+
 
 
 # a = Artii::Base.new :font => 'larry3d'
@@ -29,3 +39,6 @@ battle(char, 1)
 # ██████╔╝██║░░██║╚█████╔╝██║░░░░░
 # ╚═════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░░░░"
 
+
+# artii = Artii::Base.new :font => 'graceful'
+# puts artii.asciify("SHOP")
