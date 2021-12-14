@@ -8,7 +8,7 @@ gem "tty-prompt"
 gem "tty-box"
 gem 'colorize'
 gem 'artii'
-
+gem 'json'
 
 
 # gem "rails"

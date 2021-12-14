@@ -41,13 +41,13 @@ def daily_menu(char , day)
     question.select("Opening the dungeon gate...", "Strat Battle")
     battle(char, day)
   when "Save and Exit to main menu"
-    save_game
+    save_game(char, day)
     puts "Saving"
     sleep 1
     question.select("Saved", "Main menu")
     main_menu
   when "Save and Exit"
-    save_game
+    save_game(char, day)
     puts "Saving"
     sleep 1
     question.select("Saved", "Exit")
@@ -57,6 +57,8 @@ end
 
 # shop page
 def shop(char, day)
+  char = char
+  day = day
   question = TTY::Prompt.new
   # Creat all the item will sell in shop
   shoplist = ["MAX HP +50 Potion - cost 60 gold",
@@ -64,7 +66,7 @@ def shop(char, day)
     "MAX HP +100 Potion - cost 80 gold",
     "Attack +20 Potion - cost 80 gold"]
   # random pick 2 item from shop list add leave
-   choises = shoplist.sample(2).push("Fully heal - cost 10gold","Leave.")
+   choises = shoplist.sample(2).push("Fully heal - cost 10 gold","Leave.")
 
   while char.alive
     system('clear')
@@ -80,7 +82,7 @@ def shop(char, day)
     when shoplist[2]
       # "MAX HP +100 Potion - cost 80 gold"
       buy(char,80,"max_hp",100)
-    when choises[3]
+    when shoplist[3]
       # "Attack +20 Potion - cost 80 gold"
       buy(char,80,"att",20)
     when choises[-2]
@@ -89,8 +91,9 @@ def shop(char, day)
     when choises[-1]
       # "Leave"
       return daily_menu(char, day)
-    end
+    end 
   end
+
   # error message if something went wrong
   puts "You should not see this message!!! Error!!!"
 end
@@ -130,7 +133,7 @@ def battle(char, day)
       end
 
     when "Heal"
-      # Can't attack but heal yourself 30 hp
+      # Can't attack but heal yourself
       char.heal(50)
       # show the box
       question.select("Healing yourself.", "Healing.")
@@ -165,7 +168,7 @@ def battle(char, day)
       question.select("After the fierce battle, you fall asleep", "Next day...")
       # after battle heal 80 point of hp
       char.heal(80)
-      # break battle loop to daily menu
+      # break battle loop to daily menu day + 1
       return daily_menu(char, day + 1)
     end
 
@@ -190,12 +193,15 @@ def battle(char, day)
 
     # Check char hp 
     if char.hp < 1
+      # when hp < 1 lose game
       sleep 1
       system('clear')
       show_box(char, day, "YOU LOSE", monster)
       question.select("You lose.", "Main menu")
+      # break loot go to main_menu
       return main_menu
     else
+      # char alive, refresh HP to box 
       sleep 1
       system('clear')
       show_box(char, day, mon_damge[2], monster)
@@ -211,6 +217,7 @@ def battle(char, day)
       puts "Hero Turn."
     end
   end
+  # Error if you see this
   puts "You should not see this message!!! Your are already dead!!!"
 end
 

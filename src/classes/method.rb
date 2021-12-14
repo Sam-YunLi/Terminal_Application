@@ -19,7 +19,7 @@ def new_character
 
     reroll = question.select("Your HP: #{hp}, Attact power: #{att}".colorize(:light_red)) do |menu|
       menu.choice "Reroll Attibutes.".colorize(:light_blue), false
-      menu.choice "i am done.".colorize(:light_blue), true
+      menu.choice "That's it.".colorize(:light_blue), true
     end
 
     if reroll
@@ -99,6 +99,11 @@ end
 
 # buy item check then use
 def buy(char, price, effect, number)
+  char = char
+  price = price
+  effect = effect
+  number = number
+
   if char.check(price)
     # use item
     puts "Drinking the potion."
@@ -118,15 +123,28 @@ def buy(char, price, effect, number)
       puts "Sorry, there are some problem"
     end
   else
+    sleep 1
     puts "Sorry, You can't affored."
+    sleep 2
   end
 end 
 
 
 # Save game method
-def save_game
-  puts "Save game!"
-
+def save_game(char,day)
+  char = char
+  day = day
+  save_file = {char.name => [char.hp, char.max_hp, char.att, char.gold, char.alive, day]}
+  # Check the file exitst and file is not empty
+  if File::exists?('./save/save.json') and File.read("./save/save.json") != ""
+    read_file = JSON.parse(IO.read("./save/save.json"))
+    # use merge cover the old data
+    save_file = read_file.merge(save_file){|key, old_v, new_v| new_v}
+  end
+  # rewrite file
+  File.open("./save/save.json","w") do |f|
+    f.write(save_file.to_json)
+  end
 end 
 
 
