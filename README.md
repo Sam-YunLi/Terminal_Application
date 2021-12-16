@@ -66,6 +66,7 @@ In tiny hero characters and monsters build by using Character class and Monster 
   <img src="docs/save_file.png" width="60%">
  
 - Visual performance. Due to the limitations of the my ability and terminal app, I try my best to make the visual performance as good as possible. Use the artii font and tty-box to separate the terminal window into 2 parts. Selection and type will always keep at the bottom part, the top part will show the character abilities and some basic information.
+
   <img src="docs/battle_page_monster_turn.png" width="70%">
 
 - Percentage progress, After studying how to use ruby to control the terminal. I build a cool percentage progress in the install page. It will flush and repeat print in one line to make it like an animation effect.
