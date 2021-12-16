@@ -45,15 +45,15 @@ class Character
 
   # spend money
   def spend(price)
-    @gold = @gold - price
+    @gold -= price
   end
-  
   # increase max_hp
+
   def increase_max_hp(max_hp)
     @max_hp += max_hp
     @hp += max_hp
   end
-  
+
   # increase att
   def increase_att(att)
     @att += att
@@ -65,7 +65,7 @@ class Character
       @hp = 0
       @alive = false
     else
-      @hp = @hp - hurt
+      @hp -= hurt
     end
   end
 end
@@ -81,19 +81,19 @@ class Monster
     when 1..5
       @name = ["Slima", "Goblin", "Spirit", "Fly"].sample
       @att = roll_dice(25, 30) + @day
-      @max_hp = roll_dice(70,100) + @day * 10
+      @max_hp = roll_dice(70,100) + @day * 15
       @hp = @max_hp
       @gold = roll_dice(20,50)
     when 6..10
       @name = ["Goblin", "Spirit", "Skeletor", "Troll", "Vampire", "Zombie", "Ghoul"].sample
-      @att = roll_dice(30,35) + (@day - 5) * 2
-      @max_hp = roll_dice(130,150) + (@day - 5) * 15
+      @att = roll_dice(30,35) + (@day - 5) * 3
+      @max_hp = roll_dice(130,150) + (@day - 5) * 20
       @hp = @max_hp
       @gold = roll_dice(30,60)
     else
       @name =["Werewolf", "Yeti", "Godzilla", "Troll", "Vampire", "Zombie", "Ghoul"].sample
-      @att = roll_dice(40,45) + (@day - 10) * 3
-      @max_hp = roll_dice(205,225) + (@day - 10) * 20
+      @att = roll_dice(40,45) + (@day - 10) * 6
+      @max_hp = roll_dice(205,225) + (@day - 10) * 30
       @hp = @max_hp
       @gold = roll_dice(40,70)
     end
@@ -114,7 +114,7 @@ class Monster
     if (@hp - hurt) < 1
       @hp = 0
     else
-      @hp = @hp - hurt
+      @hp -= hurt
     end
   end
 end

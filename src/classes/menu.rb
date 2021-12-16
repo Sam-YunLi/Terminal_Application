@@ -175,7 +175,6 @@ def battle(char, day)
 
     # if monster still alive monster turn
     # show the box
-    # count 2 sec
     question.select("Hero turn finished", "Monster turn.")
     system('clear')
     show_box(char, day, "#{monster.name} TURN", monster)
@@ -224,4 +223,3 @@ def battle(char, day)
   # Error if you see this
   puts "You should not see this message!!! Your are already dead!!!"
 end
-

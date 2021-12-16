@@ -24,8 +24,6 @@ def new_character
     end
   end
 
-
-
   # random hp and att, player reroll until they happy with it
   while true
     hp = roll_dice(80,100)
@@ -41,7 +39,7 @@ def new_character
     end
   end
 
-  # return a character class
+  # return a character object
   return Character.new(name, hp, hp, att, 100, true)
 end
 
@@ -143,7 +141,6 @@ def buy(char, price, effect, number)
   end
 end 
 
-
 # Save game method
 def save_game(char,day)
   char = char
@@ -160,7 +157,6 @@ def save_game(char,day)
     f.write(save_file.to_json)
   end
 end 
-
 
 # Load game method
 def load_game
@@ -188,7 +184,6 @@ def load_game
     return main_menu
   end
 end
-
 
 # delet from save file, put in hof file
 def hero_dead(char, day)
@@ -246,7 +241,6 @@ def hall_of_fame
   end
   return main_menu
 end
-
 
 # Exit game method
 def exit_game
