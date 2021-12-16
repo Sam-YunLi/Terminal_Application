@@ -4,8 +4,8 @@ require 'colorize'
 require 'artii'
 require 'json'
 
-require_relative './classes/class.rb'
-require_relative './classes/method.rb'
-require_relative './classes/menu.rb'
+require_relative './lib/class.rb'
+require_relative './lib/method.rb'
+require_relative './lib/menu.rb'
 
 main_menu

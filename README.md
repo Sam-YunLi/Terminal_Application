@@ -70,6 +70,10 @@ In tiny hero characters and monsters build by using Character class and Monster 
 
 - Percentage progress, After studying how to use ruby to control the terminal. I build a cool percentage progress in the install page. It will flush and repeat print in one line to make it like an animation effect.
 
+- The error message will show on the screen when there is some problem. Like the name already exists or the price is too expensive for the hero.
+   - <img src="docs/Err_1.png" width="50%">
+   - <img src="docs/Err_2.png" width="50%">
+
 <hr/>
 
 ![Outlane Logo](docs/Outlane_logo.png)
