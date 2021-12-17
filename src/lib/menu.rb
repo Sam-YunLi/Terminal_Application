@@ -35,7 +35,7 @@ def daily_menu(char , day)
     shop(char, day)
   when "Battle"
     puts "Take a deep breath."
-    question.select("Opening the dungeon gate...", "Strat Battle")
+    question.select("Open the door of the dungeon...", "Strat Battle")
     battle(char, day)
   when "Save and Exit to main menu"
     save_game(char, day)
@@ -104,15 +104,15 @@ def battle(char, day)
   system('clear')
   show_box(char, day,"Battle Start!", monster)
   while char.alive
-    case question.select("BATTLE", choises)
+    case question.select("Battle interface.", choises)
     when "Attack"
       # Roll damge print message 
       char_damge = count_damge(char.att)
       sleep 1
-      puts "You roll dice got #{char_damge[0]} point, #{char_damge[2]}"
+      puts "You roll the dice and get #{char_damge[0]} point, #{char_damge[2]}"
       if char_damge[1] != 0
         sleep 1
-        puts "#{monster.name} receive #{char_damge[1]} points of damage."
+        puts "#{monster.name} takes #{char_damge[1]} damage."
       end
       # damage the monster
       monster.get_hurt(char_damge[1])
@@ -120,9 +120,9 @@ def battle(char, day)
       sleep 1
       system('clear')
       show_box(char, day, "#{char_damge[2]}", monster)
-      puts "You roll dice got #{char_damge[0]} point, #{char_damge[2]}"
+      puts "You roll the dice and get #{char_damge[0]} point, #{char_damge[2]}"
       if char_damge[1] != 0
-        puts "#{char_damge[2]} \n#{monster.name} receive #{char_damge[1]} points of damage."
+        puts "#{char_damge[2]} \n#{monster.name} takes #{char_damge[1]} damage."
       end
     when "Heal"
       # Can't attack but heal yourself
@@ -130,14 +130,14 @@ def battle(char, day)
       char.heal(heal_point)
       # show the box
       sleep 1
-      question.select("Using bandage.", "Healing yourself")
+      question.select("Heal yourself with a bandage.", "Recovering")
       system('clear')
       show_box(char, day, "Heal yourlesf.", monster)
-      puts "Healing yourself."
-      puts "You got #{heal_point} HP."
+      puts "eal yourself with a bandage."
+      puts "You recover #{heal_point} HP."
     when "Run"
       # 1/6 of chance to fail running.
-      question.select("Tring to run away.","Run.")
+      question.select("Try to run away.","Run.")
       if roll_dice(1,6) != 1
         question.select("Successful","Go back to town.")
         return daily_menu(char, day)
@@ -145,8 +145,8 @@ def battle(char, day)
       # when faild running, lose attack chance.
       # show the box
       system('clear')
-      show_box(char, day, "You failed!", monster)
-      puts "Running faild!."
+      show_box(char, day, "Oh, unfortunately, you failed!", monster)
+      puts "Escape failed!"
     end
     # Check monster hp 
     if monster.hp < 1
@@ -157,7 +157,7 @@ def battle(char, day)
       puts "Congratulations on defeating the monster, You picked up #{monster.gold} gold!"
       sleep 1
       char.loot(monster.gold)
-      question.select("After the fierce battle, you fall asleep", "Next day...")
+      question.select("After the fierce battle, you fall asleep", "The next day...")
       # after battle heal 80 point of hp
       char.heal(80)
       # break battle loop to daily menu day + 1
@@ -165,17 +165,17 @@ def battle(char, day)
     end
     # if monster still alive monster turn
     # show the box
-    question.select("Hero turn finished", "Monster turn.")
+    question.select("Hero turn finished", "It's #{monster.name}'s turn.")
     system('clear')
     show_box(char, day, "#{monster.name} TURN", monster)
-    puts "It's #{monster.name} turn."
+    puts "It's #{monster.name}'s turn."
     # monster roll damge
     mon_damge = count_damge(monster.att)
     sleep 1
-    puts "#{monster.name} roll dice got #{mon_damge[0]} point, #{mon_damge[2]}"
+    puts "#{monster.name} roll dice and get #{mon_damge[0]} point, #{mon_damge[2]}"
     if mon_damge[1] != 0 
       sleep 1
-      puts "You receive #{mon_damge[1]} points of damage."
+      puts "You take #{mon_damge[1]} damage."
     end
     # Hero get the damge
     char.get_hurt(mon_damge[1])
@@ -202,7 +202,7 @@ def battle(char, day)
       show_box(char, day, "YOU LOSE", monster)
       # use this method to delet from save file, put in hof file
       hero_dead(char,day)
-      question.select("You lose.", "Main menu")
+      question.select("You are defeated.", "Go back to main menu")
       # break loot go to main_menu
       return main_menu
     end

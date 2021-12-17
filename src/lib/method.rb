@@ -28,7 +28,7 @@ def new_character
   while true
     hp = roll_dice(80,100)
     att = roll_dice(35,40)
-    reroll = question.select("Your HP: #{hp}, Attact power: #{att}".colorize(:light_red)) do |menu|
+    reroll = question.select("Your HP: #{hp}, Attack power: #{att}".colorize(:light_red)) do |menu|
       menu.choice "Reroll Attibutes.".colorize(:light_blue), false
       menu.choice "That's it.".colorize(:light_blue), true
     end
@@ -128,11 +128,12 @@ def buy(char, price, effect, number)
     elsif effect == "f_heal"
       char.heal(number)
     else
+      # error if you see this message
       puts "Sorry, there are some problem"
     end
   else
     sleep 1
-    puts "Sorry, You can't affored."
+    puts "Sorry, You can't affored that."
     sleep 2
   end
 end 
@@ -167,7 +168,7 @@ def load_game
       list = list.push({name: "#{key}    Day #{value[5]}.", value: key})
     end
     # show the selection
-    lock_char = question.select("Please choise which one you want play.", list)
+    lock_char = question.select("Please choose which hero you want to play.", list)
     puts "Loading. #{lock_char}"
     sleep 1
     question.select("Complete loading.", "Start.")
@@ -176,7 +177,7 @@ def load_game
     daily_menu(char,day)
   # if the file is not exit
   else
-    question.select("Sorry, no saving.", "back to main menu")
+    question.select("Sorry, no file saved.", "Back to the main menu")
     return main_menu
   end
 end
