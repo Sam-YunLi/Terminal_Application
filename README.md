@@ -120,5 +120,9 @@ Implementation plan use trello : [link](https://trello.com/b/8HdBAS8b/terminalap
 
 <hr/>
 
+Git Log files link:  [Git log](src/log.txt)
+
+<hr/>
+
 ![Thank you Logo](docs/Thankyou_logo.png)
 <hr/>

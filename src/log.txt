@@ -1,0 +1,113 @@
+commit e67ddc427f28b8001ad4e46c08439c291efba206
+Author: root <root@LAPTOP-C9K1L8J4.localdomain>
+Date:   Fri Dec 17 15:34:33 2021 +1100
+
+    Add a selection make the load game page can go back to main menu page
+
+commit 4ca2c7d36feb674db239ba2da8b67c879b5f015e
+Author: root <root@LAPTOP-C9K1L8J4.localdomain>
+Date:   Fri Dec 17 15:28:19 2021 +1100
+
+    Fix the grammar problem fot he diaplayin menu and method file.
+
+commit ea097cf626b9ed160234585506e8e6df478bd3e5
+Author: root <root@LAPTOP-C9K1L8J4.localdomain>
+Date:   Fri Dec 17 12:22:02 2021 +1100
+
+    fix a bug in battle heal
+
+commit a9fc4d279d18f10cb80b91ba1034b3d0c9041306
+Author: root <root@LAPTOP-C9K1L8J4.localdomain>
+Date:   Fri Dec 17 12:10:48 2021 +1100
+
+    Make the code dry
+
+commit 694b3b236b84fcff08ffb9ee474171d72b63e94e
+Author: root <root@LAPTOP-C9K1L8J4.localdomain>
+Date:   Fri Dec 17 09:33:09 2021 +1100
+
+    fix the rspec and spec_helper file missing problem
+
+commit e30d19b17f53da9c2609a6c1951b02d85f90e5dd
+Author: root <root@LAPTOP-C9K1L8J4.localdomain>
+Date:   Fri Dec 17 09:16:04 2021 +1100
+
+    Build the test for classes
+
+commit 6c42394515d992cb78bfcfa573b55bff4b33eeb9
+Author: root <root@LAPTOP-C9K1L8J4.localdomain>
+Date:   Fri Dec 17 04:59:55 2021 +1100
+
+    upload ppt slide
+
+commit 41bde2931b637aed06b2cfe3d25fffe30ab14d8e
+Author: root <root@LAPTOP-C9K1L8J4.localdomain>
+Date:   Fri Dec 17 04:46:09 2021 +1100
+
+    change the file name to lib
+
+commit e119849ed191c9847b5af40575c532720b920818
+Author: root <root@LAPTOP-C9K1L8J4.localdomain>
+Date:   Fri Dec 17 04:16:17 2021 +1100
+
+    fix display bug for readme
+
+commit 7c44a383d6d498cd033c65082997476795051fc3
+Author: root <root@LAPTOP-C9K1L8J4.localdomain>
+Date:   Fri Dec 17 03:57:17 2021 +1100
+
+    Finish the readme file
+
+commit cb2dbdd4b3bf9fc92cd16e99a6ebbcf28b9e5a29
+Author: root <root@LAPTOP-C9K1L8J4.localdomain>
+Date:   Thu Dec 16 22:10:04 2021 +1100
+
+    debug. make sure all the selection not error.
+
+commit 0dce2ee666f8b46fddfe34291dcafe8c84679671
+Author: root <root@LAPTOP-C9K1L8J4.localdomain>
+Date:   Wed Dec 15 09:10:22 2021 +1100
+
+    install file and install pagg
+
+commit a427b356212769138e36bffb6dfd8325a4be49a0
+Author: root <root@LAPTOP-C9K1L8J4.localdomain>
+Date:   Wed Dec 15 02:09:23 2021 +1100
+
+    Finish all the method and class build. move to test
+
+commit 4824401b3653366f1f0dedf4760dc6950e208546
+Author: root <root@LAPTOP-C9K1L8J4.localdomain>
+Date:   Tue Dec 14 23:56:16 2021 +1100
+
+    Save game can be use.
+
+commit c0c5d0a5edec7dbadb8040c1f03434ea54971524
+Author: root <root@LAPTOP-C9K1L8J4.localdomain>
+Date:   Tue Dec 14 16:57:15 2021 +1100
+
+    Shop logic finihsed
+
+commit 3a841cab2bf03f45b8e545083f5ad68b3b339fb3
+Author: root <root@LAPTOP-C9K1L8J4.localdomain>
+Date:   Sun Dec 12 22:38:27 2021 +1100
+
+    build battle loot
+
+commit 53f0676cf48bd2fb07164085aa4c8c2704ae8853
+Author: root <root@LAPTOP-C9K1L8J4.localdomain>
+Date:   Sun Dec 12 00:01:02 2021 +1100
+
+    Build Daily Menu
+
+commit 7bf5eb62b5850035276b412d152cf47ac48781d5
+Author: root <root@LAPTOP-C9K1L8J4.localdomain>
+Date:   Sat Dec 11 17:41:09 2021 +1100
+
+    Build main menu
+
+commit 33504a78e8e2f9ff1e78a48dd45e820efe256047
+Author: root <root@LAPTOP-C9K1L8J4.localdomain>
+Date:   Sat Dec 11 14:13:41 2021 +1100
+
+    Start Build Application
