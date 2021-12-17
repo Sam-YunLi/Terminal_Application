@@ -28,17 +28,14 @@ def new_character
   while true
     hp = roll_dice(80,100)
     att = roll_dice(35,40)
-
     reroll = question.select("Your HP: #{hp}, Attact power: #{att}".colorize(:light_red)) do |menu|
       menu.choice "Reroll Attibutes.".colorize(:light_blue), false
       menu.choice "That's it.".colorize(:light_blue), true
     end
-
     if reroll
       break
     end
   end
-
   # return a character object
   return Character.new(name, hp, hp, att, 100, true)
 end
@@ -115,7 +112,6 @@ def buy(char, price, effect, number)
   price = price
   effect = effect
   number = number
-
   if char.check(price)
     # use item
     puts "Drinking the potion."

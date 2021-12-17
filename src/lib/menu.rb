@@ -126,14 +126,15 @@ def battle(char, day)
       end
     when "Heal"
       # Can't attack but heal yourself
-      char.heal(50)
+      heal_point = roll_dice(30,80)
+      char.heal(heal_point)
       # show the box
       sleep 1
       question.select("Using bandage.", "Healing yourself")
       system('clear')
       show_box(char, day, "Heal yourlesf.", monster)
       puts "Healing yourself."
-      puts "You got 50 HP."
+      puts "You got #{heal_point} HP."
     when "Run"
       # 1/6 of chance to fail running.
       question.select("Tring to run away.","Run.")
