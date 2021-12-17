@@ -27,20 +27,12 @@ class Character
 
   # heal hp, max to max_hp
   def heal(heal)
-    if (@hp + heal) > @max_hp
-      @hp = @max_hp
-    else
-      @hp += heal
-    end
+    @hp = (@hp + heal) > @max_hp ? @max_hp : @hp + heal
   end
 
   # check price is affordable or not
   def check(price)
-    if @gold < price
-      return false
-    else
-      return true
-    end
+    @gold < price ? false : true
   end
 
   # spend money
@@ -111,10 +103,6 @@ class Monster
 
   # get damge
   def get_hurt(hurt)
-    if (@hp - hurt) < 1
-      @hp = 0
-    else
-      @hp -= hurt
-    end
+    @hp = (@hp - hurt) < 1 ? 0 : @hp - hurt
   end
 end

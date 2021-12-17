@@ -10,13 +10,10 @@ def main_menu
     char = new_character
     # put char to daily menu
     daily_menu(char, 1)
-    
   when "Load Game"
     load_game
-
   when "Hall of fame"
     hall_of_fame
-
   when "Exit"
     exit_game
   end
@@ -67,7 +64,6 @@ def shop(char, day)
     "Attack +20 Potion - cost 80 gold"]
   # random pick 2 item from shop list add leave
    choises = shoplist.sample(2).push("Fully heal - cost 10 gold","Leave.")
-
   while char.alive
     system('clear')
     show_box(char, day, "DAY #{day} !")
@@ -93,7 +89,6 @@ def shop(char, day)
       return daily_menu(char, day)
     end 
   end
-
   # error message if something went wrong
   puts "You should not see this message!!! Error!!!"
 end
@@ -105,11 +100,9 @@ def battle(char, day)
   monster = Monster.new(day)
   question = TTY::Prompt.new
   choises = ["Attack", "Heal", "Run"]
-
   # show the box at top
   system('clear')
   show_box(char, day,"Battle Start!", monster)
-
   while char.alive
     case question.select("BATTLE", choises)
     when "Attack"
@@ -131,7 +124,6 @@ def battle(char, day)
       if char_damge[1] != 0
         puts "#{char_damge[2]} \n#{monster.name} receive #{char_damge[1]} points of damage."
       end
-
     when "Heal"
       # Can't attack but heal yourself
       char.heal(50)
@@ -142,7 +134,6 @@ def battle(char, day)
       show_box(char, day, "Heal yourlesf.", monster)
       puts "Healing yourself."
       puts "You got 50 HP."
-
     when "Run"
       # 1/6 of chance to fail running.
       question.select("Tring to run away.","Run.")
@@ -156,7 +147,6 @@ def battle(char, day)
       show_box(char, day, "You failed!", monster)
       puts "Running faild!."
     end
-
     # Check monster hp 
     if monster.hp < 1
       sleep 1
@@ -172,7 +162,6 @@ def battle(char, day)
       # break battle loop to daily menu day + 1
       return daily_menu(char, day + 1)
     end
-
     # if monster still alive monster turn
     # show the box
     question.select("Hero turn finished", "Monster turn.")
@@ -187,10 +176,8 @@ def battle(char, day)
       sleep 1
       puts "You receive #{mon_damge[1]} points of damage."
     end
-
     # Hero get the damge
     char.get_hurt(mon_damge[1])
-
     # Check char hp 
     if char.alive
       # char alive
@@ -207,7 +194,6 @@ def battle(char, day)
       system('clear')
       show_box(char, day, "HERO TURN", monster)
       puts "Hero Turn."
-
     else
       # when hp < 1 lose game
       sleep 1
