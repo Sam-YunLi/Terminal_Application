@@ -167,17 +167,22 @@ def load_game
     read_file.each do |key, value|
       list = list.push({name: "#{key}    Day #{value[5]}.", value: key})
     end
+    list = list.push(name:"Back to main menu.", value: "back_to_main")
     # show the selection
     lock_char = question.select("Please choose which hero you want to play.", list)
-    puts "Loading. #{lock_char}"
-    sleep 1
-    question.select("Complete loading.", "Start.")
-    char = Character.new(lock_char,read_file[lock_char][0],read_file[lock_char][1],read_file[lock_char][2],read_file[lock_char][3],read_file[lock_char][4])
-    day = read_file[lock_char][5]
-    daily_menu(char,day)
+    if lock_char = "back_to_main"
+      return main_menu
+    else
+      puts "Loading. #{lock_char}"
+      sleep 1
+      question.select("Complete loading.", "Start.")
+      char = Character.new(lock_char,read_file[lock_char][0],read_file[lock_char][1],read_file[lock_char][2],read_file[lock_char][3],read_file[lock_char][4])
+      day = read_file[lock_char][5]
+      daily_menu(char,day)
+    end
   # if the file is not exit
   else
-    question.select("Sorry, no file saved.", "Back to the main menu")
+    question.select("Sorry, no file saved.", "Back to the main menu.")
     return main_menu
   end
 end
